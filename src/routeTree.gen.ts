@@ -10,33 +10,73 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProgrammeRouteImport } from './routes/programme'
+import { Route as SpeakersRouteImport } from './routes/speakers'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgrammeRoute = ProgrammeRouteImport.update({
+  id: '/programme',
+  path: '/programme',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SpeakersRoute = SpeakersRouteImport.update({
+  id: '/speakers',
+  path: '/speakers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/privacy': typeof PrivacyRoute
+  '/programme': typeof ProgrammeRoute
+  '/speakers': typeof SpeakersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/privacy': typeof PrivacyRoute
+  '/programme': typeof ProgrammeRoute
+  '/speakers': typeof SpeakersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/privacy': typeof PrivacyRoute
+  '/programme': typeof ProgrammeRoute
+  '/speakers': typeof SpeakersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/about' | '/privacy' | '/programme' | '/speakers'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/about' | '/privacy' | '/programme' | '/speakers'
+  id: '__root__' | '/' | '/about' | '/privacy' | '/programme' | '/speakers'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ProgrammeRoute: typeof ProgrammeRoute
+  SpeakersRoute: typeof SpeakersRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +88,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programme': {
+      id: '/programme'
+      path: '/programme'
+      fullPath: '/programme'
+      preLoaderRoute: typeof ProgrammeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/speakers': {
+      id: '/speakers'
+      path: '/speakers'
+      fullPath: '/speakers'
+      preLoaderRoute: typeof SpeakersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  PrivacyRoute: PrivacyRoute,
+  ProgrammeRoute: ProgrammeRoute,
+  SpeakersRoute: SpeakersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
