@@ -1,24 +1,31 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import heroImage from "@/assets/ard-reading-room.jpg";
+import campusImage from "@/assets/ghent-campus.jpg";
+import { AboutHighlights, DateLocation, HomeSectionHeading, ProgrammeList, RegistrationCallout, SpeakerCard } from "@/components/conference/content";
+import { SectionLabel } from "@/components/conference/site";
+import { speakers } from "@/lib/conference-data";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({ meta: [
+    { title: "Accounting Research Day 2026 — Ghent University" },
+    { name: "description", content: "Join Accounting Research Day 2026 at Ghent University for research presentations, discussion and academic collaboration." },
+    { property: "og:title", content: "Accounting Research Day 2026 — Ghent University" },
+    { property: "og:description", content: "A day of accounting research, discussion and academic collaboration in Ghent." },
+    { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
+  ]}), component: HomePage,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+function HomePage() { return <>
+  <section className="overflow-hidden bg-[linear-gradient(180deg,var(--mist),var(--paper))]"><div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-14 md:py-20 lg:grid-cols-12 lg:px-8">
+    <div className="lg:col-span-6"><SectionLabel>Ghent University</SectionLabel><h1 className="max-w-xl font-display text-5xl font-semibold leading-[1.02] text-ink md:text-7xl">Accounting Research Day <em className="font-medium text-brand">2026</em></h1><div className="mt-7"><DateLocation /></div><p className="mt-7 max-w-xl text-base leading-relaxed text-ink/70">Bringing together accounting researchers to exchange ideas, present new research and foster academic collaboration.</p><div className="mt-9 flex flex-wrap gap-4"><Button asChild size="lg"><Link to="/registration">Register <ArrowRight /></Link></Button><Button asChild variant="outline" size="lg"><Link to="/programme">View programme</Link></Button></div></div>
+    <div className="lg:col-span-6"><div className="glass-panel p-2"><img src={heroImage} alt="Historic university reading room prepared for accounting research" width={1440} height={1088} fetchPriority="high" className="aspect-[4/3] w-full rounded-md object-cover" /></div></div>
+  </div></section>
+  <section className="mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-12 lg:px-8 lg:py-24"><div className="lg:col-span-4"><SectionLabel>About</SectionLabel><h2 className="font-display text-4xl font-semibold leading-tight text-ink">A forum for rigorous accounting scholarship</h2></div><div className="lg:col-span-8"><p className="max-w-2xl leading-relaxed text-ink/70">The Accounting Research Day convenes researchers, PhD candidates, academics and interested participants to present and discuss recent work in one focused day of peer exchange.</p><div className="mt-9"><AboutHighlights /></div><Button asChild variant="link" className="mt-6 px-0"><Link to="/about">About the conference <ArrowRight /></Link></Button></div></section>
+  <section className="bg-mist/65"><div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24"><HomeSectionHeading label="Programme" title="The day, at a glance" copy="An easy-to-scan programme with all times and speakers clearly marked for later confirmation." /><ProgrammeList limit={6} /><Button asChild variant="outline" className="mt-7"><Link to="/programme">View full programme <ArrowRight /></Link></Button></div></section>
+  <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24"><HomeSectionHeading label="Speakers" title="Featured keynote" copy="All names and affiliations shown are fictional placeholders for layout purposes." /><SpeakerCard speaker={speakers[0]} featured /><Button asChild variant="link" className="mt-6 px-0"><Link to="/speakers">Meet all speakers <ArrowRight /></Link></Button></section>
+  <section className="bg-mist/65"><div className="mx-auto grid max-w-7xl gap-10 px-5 py-20 lg:grid-cols-12 lg:px-8 lg:py-24"><div className="lg:col-span-7"><SectionLabel>Call for Papers</SectionLabel><h2 className="font-display text-5xl font-semibold text-ink">Contribute to the conversation</h2><p className="mt-5 max-w-2xl leading-relaxed text-ink/70">We welcome original accounting research across methods, traditions and career stages. Review the scope, requirements and placeholder dates before preparing a submission.</p><Button asChild className="mt-8"><Link to="/call-for-papers">Read the call <ArrowRight /></Link></Button></div><div className="glass-panel p-7 lg:col-span-5"><p className="eyebrow text-brand">Important dates</p><dl className="mt-5 divide-y divide-brand/10"><div className="flex justify-between py-4"><dt>Submission deadline</dt><dd className="font-semibold text-gold">[DATE]</dd></div><div className="flex justify-between py-4"><dt>Notification date</dt><dd className="font-semibold text-gold">[DATE]</dd></div><div className="flex justify-between py-4"><dt>Conference date</dt><dd className="font-semibold text-gold">[DATE]</dd></div></dl></div></div></section>
+  <section className="mx-auto grid max-w-7xl gap-10 px-5 py-20 lg:grid-cols-12 lg:px-8 lg:py-24"><div className="lg:col-span-5"><SectionLabel>Venue</SectionLabel><h2 className="font-display text-5xl font-semibold text-ink">Ghent University</h2><p className="mt-4 text-ink/70">Ghent, Belgium · [ADDRESS PLACEHOLDER]</p><p className="mt-6 max-w-lg text-sm leading-relaxed text-ink/65">Practical travel, public transport, parking and accommodation details will help international participants plan their visit.</p><Button asChild variant="outline" className="mt-7"><Link to="/venue">Plan your visit <ArrowRight /></Link></Button></div><div className="lg:col-span-7"><img src={campusImage} alt="Aerial view of historic Ghent and university buildings" width={1440} height={1088} loading="lazy" className="aspect-[16/10] w-full rounded-lg object-cover" /></div></section>
+  <RegistrationCallout />
+</>; }
