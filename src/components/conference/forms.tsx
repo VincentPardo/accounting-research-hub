@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -27,4 +27,4 @@ export function ContactForm() {
   return <form onSubmit={submit} className="glass-panel p-6 md:p-8">{sent ? <div role="status"><CheckCircle2 className="size-9 text-brand" /><h2 className="mt-4 font-display text-3xl font-semibold">Message noted</h2><p className="mt-2 text-sm text-ink/65">This demonstration form is not connected to an inbox.</p><Button className="mt-6" variant="outline" onClick={() => setSent(false)} type="button">Send another message</Button></div> : <><div className="grid gap-5 sm:grid-cols-2"><Field id="contact-name" label="Name"><Input id="contact-name" required className={fieldClass} /></Field><Field id="contact-email" label="Email"><Input id="contact-email" type="email" required className={fieldClass} /></Field><div className="sm:col-span-2"><Field id="subject" label="Subject"><Input id="subject" required className={fieldClass} /></Field></div><div className="sm:col-span-2"><Field id="message" label="Message"><Textarea id="message" required rows={6} className="bg-paper/70 shadow-none focus-visible:ring-2" /></Field></div></div><Button className="mt-7" size="lg">Send enquiry</Button></>}</form>;
 }
 
-function Field({ id, label, children }: { id: string; label: string; children: React.ReactNode }) { return <div><label htmlFor={id} className="mb-2 block text-sm font-medium text-ink">{label}</label>{children}</div>; }
+function Field({ id, label, children }: { id: string; label: string; children: ReactNode }) { return <div><label htmlFor={id} className="mb-2 block text-sm font-medium text-ink">{label}</label>{children}</div>; }
