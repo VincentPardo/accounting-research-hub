@@ -18,18 +18,18 @@ export function SiteHeader() {
         <span className="truncate font-display text-xl font-semibold text-ink sm:text-2xl">Accounting Research Day</span>
         <span className="text-[10px] font-semibold uppercase text-gold">2026</span>
       </Link>
-      <nav aria-label="Main navigation" className="hidden items-center gap-4 2xl:flex">
+      <nav aria-label="Main navigation" className="hidden items-center gap-3 xl:flex">
         <Link to="/" activeOptions={{ exact: true }} className="nav-link">Home</Link>
         {navItems.map(([label, to]) => <Link key={to} to={to} className="nav-link">{label}</Link>)}
       </nav>
       <div className="flex items-center gap-2">
         <Button asChild size="sm" className="hidden sm:inline-flex"><Link to="/registration">Register <ArrowRight /></Link></Button>
-        <Button variant="ghost" size="icon" className="2xl:hidden" onClick={() => setOpen(v => !v)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open}>
+        <Button variant="ghost" size="icon" className="xl:hidden" onClick={() => setOpen(v => !v)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open}>
           {open ? <X /> : <Menu />}
         </Button>
       </div>
     </div>
-    {open && <nav aria-label="Mobile navigation" className="border-t border-brand/10 bg-paper px-5 py-4 2xl:hidden">
+    {open && <nav aria-label="Mobile navigation" className="border-t border-brand/10 bg-paper px-5 py-4 xl:hidden">
       <div className="mx-auto grid max-w-7xl gap-1">
         <Link to="/" className="mobile-nav-link" onClick={() => setOpen(false)}>Home</Link>
         {navItems.map(([label, to]) => <Link key={to} to={to} className="mobile-nav-link" onClick={() => setOpen(false)}>{label}</Link>)}
