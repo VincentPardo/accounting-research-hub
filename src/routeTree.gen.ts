@@ -20,6 +20,7 @@ import { Route as ProgrammeRouteImport } from './routes/programme'
 import { Route as RegistrationRouteImport } from './routes/registration'
 import { Route as SpeakersRouteImport } from './routes/speakers'
 import { Route as VenueRouteImport } from './routes/venue'
+import { Route as ConferencesIndexRouteImport } from './routes/conferences.index'
 import { Route as ConferencesYearRouteImport } from './routes/conferences.$year'
 
 const IndexRoute = IndexRouteImport.update({
@@ -77,6 +78,11 @@ const VenueRoute = VenueRouteImport.update({
   path: '/venue',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConferencesIndexRoute = ConferencesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ConferencesRoute,
+} as any)
 const ConferencesYearRoute = ConferencesYearRouteImport.update({
   id: '/$year',
   path: '/$year',
@@ -96,12 +102,12 @@ export interface FileRoutesByFullPath {
   '/speakers': typeof SpeakersRoute
   '/venue': typeof VenueRoute
   '/conferences/$year': typeof ConferencesYearRoute
+  '/conferences/': typeof ConferencesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/call-for-papers': typeof CallForPapersRoute
-  '/conferences': typeof ConferencesRouteWithChildren
   '/contact': typeof ContactRoute
   '/news': typeof NewsRoute
   '/privacy': typeof PrivacyRoute
@@ -110,6 +116,7 @@ export interface FileRoutesByTo {
   '/speakers': typeof SpeakersRoute
   '/venue': typeof VenueRoute
   '/conferences/$year': typeof ConferencesYearRoute
+  '/conferences': typeof ConferencesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -125,6 +132,7 @@ export interface FileRoutesById {
   '/speakers': typeof SpeakersRoute
   '/venue': typeof VenueRoute
   '/conferences/$year': typeof ConferencesYearRoute
+  '/conferences/': typeof ConferencesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -141,12 +149,12 @@ export interface FileRouteTypes {
     | '/speakers'
     | '/venue'
     | '/conferences/$year'
+    | '/conferences/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/call-for-papers'
-    | '/conferences'
     | '/contact'
     | '/news'
     | '/privacy'
@@ -155,6 +163,7 @@ export interface FileRouteTypes {
     | '/speakers'
     | '/venue'
     | '/conferences/$year'
+    | '/conferences'
   id:
     | '__root__'
     | '/'
@@ -169,6 +178,7 @@ export interface FileRouteTypes {
     | '/speakers'
     | '/venue'
     | '/conferences/$year'
+    | '/conferences/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -264,6 +274,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VenueRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/conferences/': {
+      id: '/conferences/'
+      path: '/'
+      fullPath: '/conferences/'
+      preLoaderRoute: typeof ConferencesIndexRouteImport
+      parentRoute: typeof ConferencesRoute
+    }
     '/conferences/$year': {
       id: '/conferences/$year'
       path: '/$year'
@@ -276,10 +293,12 @@ declare module '@tanstack/react-router' {
 
 interface ConferencesRouteChildren {
   ConferencesYearRoute: typeof ConferencesYearRoute
+  ConferencesIndexRoute: typeof ConferencesIndexRoute
 }
 
 const ConferencesRouteChildren: ConferencesRouteChildren = {
   ConferencesYearRoute: ConferencesYearRoute,
+  ConferencesIndexRoute: ConferencesIndexRoute,
 }
 
 const ConferencesRouteWithChildren = ConferencesRoute._addFileChildren(
