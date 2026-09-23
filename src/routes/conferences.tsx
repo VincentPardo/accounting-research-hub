@@ -1,6 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Archive } from "lucide-react";
-import { PageIntro, SectionLabel } from "@/components/conference/site";
-import { conferenceYears } from "@/lib/conference-data";
-export const Route=createFileRoute("/conferences")({head:()=>({meta:[{title:"Conference Archive — Accounting Research Day"},{name:"description",content:"Browse Accounting Research Day conference editions from 2013 onwards."},{property:"og:title",content:"Accounting Research Day Conference Archive"},{property:"og:description",content:"Past and forthcoming editions of Accounting Research Day since 2013."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:Page});
-function Page(){return <><PageIntro label="Conferences" title="Every edition since 2013">Explore the conference archive. Each edition has its own page for programme, speakers, papers and practical details.</PageIntro><section className="mx-auto max-w-7xl px-5 py-20 lg:px-8"><div className="mb-9 flex items-end justify-between"><div><SectionLabel>Archive</SectionLabel><h2 className="font-display text-4xl font-semibold">2013—2026</h2></div><Archive className="size-8 text-brand"/></div><div className="grid gap-px overflow-hidden rounded-lg border border-brand/10 bg-brand/10 sm:grid-cols-2 lg:grid-cols-3">{conferenceYears.map(year=><Link key={year} to="/conferences/$year" params={{year:String(year)}} className="group bg-paper p-6 transition-colors hover:bg-mist"><div className="flex items-start justify-between"><div><p className="eyebrow text-gold">{year===2026?"Current edition":"Archive edition"}</p><h2 className="mt-3 font-display text-3xl font-semibold text-ink">Accounting Research Day {year}</h2><p className="mt-3 text-sm text-ink/60">[DATE AND LOCATION DETAILS]</p></div><ArrowRight className="size-5 text-brand transition-transform group-hover:translate-x-1"/></div></Link>)}</div><p className="mt-5 text-xs text-muted-foreground">Archive details are placeholders until historic conference records are supplied.</p></section></>}
+import { createFileRoute, Outlet } from "@tanstack/react-router";
+
+export const Route = createFileRoute("/conferences")({
+  component: ConferencesLayout,
+});
+
+function ConferencesLayout() {
+  return <Outlet />;
+}
