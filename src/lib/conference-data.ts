@@ -35,3 +35,11 @@ export const topics = [
   "ESG and sustainability reporting", "Accounting information systems", "Capital markets research",
   "Corporate governance", "Taxation", "Experimental and archival accounting research",
 ];
+
+export const newsItems = [
+  { date: "[DATE]", category: "Announcement", title: "Accounting Research Day 2026 announced", summary: "Save-the-date details and the confirmed campus location will be published here." },
+  { date: "[DATE]", category: "Call for Papers", title: "Call for papers opens", summary: "Submission requirements, research themes and the review timeline are now available." },
+  { date: "[DATE]", category: "Programme", title: "Keynote announcement forthcoming", summary: "The featured keynote profile will be shared after formal confirmation." },
+] as const;
+
+export const conferenceYears = Array.from({ length: 14 }, (_, index) => 2026 - index);

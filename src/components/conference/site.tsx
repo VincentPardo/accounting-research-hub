@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  ["About", "/about"], ["Programme", "/programme"], ["Speakers", "/speakers"],
+  ["News", "/news"], ["Conferences", "/conferences"], ["About", "/about"], ["Programme", "/programme"], ["Speakers", "/speakers"],
   ["Call for Papers", "/call-for-papers"], ["Registration", "/registration"],
   ["Venue", "/venue"], ["Contact", "/contact"],
 ] as const;
@@ -18,18 +18,18 @@ export function SiteHeader() {
         <span className="truncate font-display text-xl font-semibold text-ink sm:text-2xl">Accounting Research Day</span>
         <span className="text-[10px] font-semibold uppercase text-gold">2026</span>
       </Link>
-      <nav aria-label="Main navigation" className="hidden items-center gap-5 xl:flex">
+      <nav aria-label="Main navigation" className="hidden items-center gap-4 2xl:flex">
         <Link to="/" activeOptions={{ exact: true }} className="nav-link">Home</Link>
         {navItems.map(([label, to]) => <Link key={to} to={to} className="nav-link">{label}</Link>)}
       </nav>
       <div className="flex items-center gap-2">
         <Button asChild size="sm" className="hidden sm:inline-flex"><Link to="/registration">Register <ArrowRight /></Link></Button>
-        <Button variant="ghost" size="icon" className="xl:hidden" onClick={() => setOpen(v => !v)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open}>
+        <Button variant="ghost" size="icon" className="2xl:hidden" onClick={() => setOpen(v => !v)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open}>
           {open ? <X /> : <Menu />}
         </Button>
       </div>
     </div>
-    {open && <nav aria-label="Mobile navigation" className="border-t border-brand/10 bg-paper px-5 py-4 xl:hidden">
+    {open && <nav aria-label="Mobile navigation" className="border-t border-brand/10 bg-paper px-5 py-4 2xl:hidden">
       <div className="mx-auto grid max-w-7xl gap-1">
         <Link to="/" className="mobile-nav-link" onClick={() => setOpen(false)}>Home</Link>
         {navItems.map(([label, to]) => <Link key={to} to={to} className="mobile-nav-link" onClick={() => setOpen(false)}>{label}</Link>)}
@@ -51,7 +51,7 @@ export function SiteFooter() {
         <div className="md:col-span-4">
           <p className="eyebrow text-gold">Navigate</p>
           <div className="mt-4 grid grid-cols-2 gap-2 text-sm text-paper/75">
-            {navItems.slice(0, 6).map(([label, to]) => <Link key={to} to={to} className="footer-link">{label}</Link>)}
+            {navItems.slice(0, 8).map(([label, to]) => <Link key={to} to={to} className="footer-link">{label}</Link>)}
           </div>
         </div>
         <div className="md:col-span-3">

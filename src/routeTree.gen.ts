@@ -11,9 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as CallForPapersRouteImport } from './routes/call-for-papers'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProgrammeRouteImport } from './routes/programme'
+import { Route as RegistrationRouteImport } from './routes/registration'
 import { Route as SpeakersRouteImport } from './routes/speakers'
+import { Route as VenueRouteImport } from './routes/venue'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,6 +27,16 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CallForPapersRoute = CallForPapersRouteImport.update({
+  id: '/call-for-papers',
+  path: '/call-for-papers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -35,48 +49,102 @@ const ProgrammeRoute = ProgrammeRouteImport.update({
   path: '/programme',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RegistrationRoute = RegistrationRouteImport.update({
+  id: '/registration',
+  path: '/registration',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SpeakersRoute = SpeakersRouteImport.update({
   id: '/speakers',
   path: '/speakers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VenueRoute = VenueRouteImport.update({
+  id: '/venue',
+  path: '/venue',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/call-for-papers': typeof CallForPapersRoute
+  '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
   '/programme': typeof ProgrammeRoute
+  '/registration': typeof RegistrationRoute
   '/speakers': typeof SpeakersRoute
+  '/venue': typeof VenueRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/call-for-papers': typeof CallForPapersRoute
+  '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
   '/programme': typeof ProgrammeRoute
+  '/registration': typeof RegistrationRoute
   '/speakers': typeof SpeakersRoute
+  '/venue': typeof VenueRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/call-for-papers': typeof CallForPapersRoute
+  '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
   '/programme': typeof ProgrammeRoute
+  '/registration': typeof RegistrationRoute
   '/speakers': typeof SpeakersRoute
+  '/venue': typeof VenueRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/privacy' | '/programme' | '/speakers'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/call-for-papers'
+    | '/contact'
+    | '/privacy'
+    | '/programme'
+    | '/registration'
+    | '/speakers'
+    | '/venue'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/privacy' | '/programme' | '/speakers'
-  id: '__root__' | '/' | '/about' | '/privacy' | '/programme' | '/speakers'
+  to:
+    | '/'
+    | '/about'
+    | '/call-for-papers'
+    | '/contact'
+    | '/privacy'
+    | '/programme'
+    | '/registration'
+    | '/speakers'
+    | '/venue'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/call-for-papers'
+    | '/contact'
+    | '/privacy'
+    | '/programme'
+    | '/registration'
+    | '/speakers'
+    | '/venue'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CallForPapersRoute: typeof CallForPapersRoute
+  ContactRoute: typeof ContactRoute
   PrivacyRoute: typeof PrivacyRoute
   ProgrammeRoute: typeof ProgrammeRoute
+  RegistrationRoute: typeof RegistrationRoute
   SpeakersRoute: typeof SpeakersRoute
+  VenueRoute: typeof VenueRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -95,6 +163,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/call-for-papers': {
+      id: '/call-for-papers'
+      path: '/call-for-papers'
+      fullPath: '/call-for-papers'
+      preLoaderRoute: typeof CallForPapersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -109,11 +191,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgrammeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/registration': {
+      id: '/registration'
+      path: '/registration'
+      fullPath: '/registration'
+      preLoaderRoute: typeof RegistrationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/speakers': {
       id: '/speakers'
       path: '/speakers'
       fullPath: '/speakers'
       preLoaderRoute: typeof SpeakersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/venue': {
+      id: '/venue'
+      path: '/venue'
+      fullPath: '/venue'
+      preLoaderRoute: typeof VenueRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -122,9 +218,13 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CallForPapersRoute: CallForPapersRoute,
+  ContactRoute: ContactRoute,
   PrivacyRoute: PrivacyRoute,
   ProgrammeRoute: ProgrammeRoute,
+  RegistrationRoute: RegistrationRoute,
   SpeakersRoute: SpeakersRoute,
+  VenueRoute: VenueRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
