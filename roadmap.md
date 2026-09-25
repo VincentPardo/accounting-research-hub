@@ -5,3 +5,4 @@
 - [x] Add a Conferences archive covering editions since 2013, with clickable detail pages.
 - [x] Refine the visual system to blue, red, white, and black, informed by the provided academic network references.
 - [x] Verify desktop and mobile navigation, pages, and form interactions.
+- [ ] Apply the full uploaded EARNet-inspired information architecture and functional requirements.
