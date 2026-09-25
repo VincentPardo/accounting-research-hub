@@ -1,28 +1,34 @@
-# Accounting Research Day 2026 website
+# EARNet-inspired academic conference structure
 
-## Experience
-- Create a restrained UGent-inspired visual system using university blue, warm white, ink, and muted gold accents, with editorial typography and subtle motion.
-- Build a polished shared header, mobile navigation, reusable buttons, section headings, profile cards, programme rows, forms, and footer.
-- Use original academic imagery that supports a credible European university-conference atmosphere.
+## Current project assessment
+- The project already uses React, TypeScript, TanStack Start, Tailwind, and separate route files; no rebuild or new framework is needed.
+- Existing pages cover Home, About, News, Conferences, Programme, Speakers, Call for Papers, Registration, Venue, Contact, Privacy, and yearly conference details.
+- Reusable pieces already exist for the header, footer, page introductions, buttons, programme rows, speaker cards, committee cards, registration form, and contact form.
+- Editable conference content is already separated into a central data module, including news, programme, speakers, committee, topics, and conference years.
+- The current visual presentation is polished but still resembles a spacious modern event landing page more than the denser, established academic information structure in the new reference.
 
-## Pages
-- **Home:** conference introduction, date and location placeholders, key actions, event highlights, programme preview, featured keynote, call-for-papers prompt, venue preview, and registration prompt.
-- **About:** purpose, audience, research/discussion/networking highlights, and organising committee profiles with clearly labelled placeholder people.
-- **Programme:** full, easily editable timetable with times, session titles, and placeholder speaker details.
-- **Speakers:** featured keynote and professional speaker grid using fictional placeholder identities marked for replacement.
-- **Call for Papers:** scope, listed research topics, submission requirements, placeholder deadlines, and submission action.
-- **Registration:** categories and placeholder prices/deadline, plus an accessible non-payment registration form with a clear confirmation state.
-- **Venue:** address placeholder, travel, public transport, parking, accommodation guidance, and a clearly labelled map placeholder.
-- **Contact:** contact details placeholder and an accessible enquiry form.
-- **Privacy:** concise placeholder privacy notice linked from the footer.
+## Proposed changes
+- Preserve the existing routes and reusable components, but reshape the shared layout into a more traditional academic conference site with a compact institutional header, highly visible navigation, restrained blue/red/white/black palette, moderate type sizes, square-edged content blocks, and minimal motion.
+- Reorder and simplify navigation to Home, About, News, Conferences, Programme, Call for Papers, Registration, and Contact. Keep Speakers and Venue accessible from the current-conference content rather than overcrowding the primary navigation.
+- Restructure the home page around the requested information hierarchy: current conference first, latest news, upcoming events, About summary, previous conferences, and organisational/contact information.
+- Make News a chronological, information-dense feed with date, title, summary, optional image, and optional destination. Newest entries remain first.
+- Divide Conferences clearly into Current/Upcoming and Previous Conferences. Keep one clickable detail page per year and make the 2026 edition visually prominent.
+- Expand yearly conference data so each edition can independently hold title, date, location, summary, programme, speakers, call-for-papers details, proceedings, photos, and links. Unknown values remain clearly marked placeholders.
+- Make the 2026 conference page a practical hub linking its overview, programme, speakers, paper presentations, important dates, registration, venue, and contact information.
+- Retain all existing accessible labels, keyboard behavior, responsive mobile menu, English-only interface, route-specific metadata, and demonstrative non-payment forms.
 
-## Quality
-- Add unique titles and social descriptions for every page.
-- Ensure keyboard navigation, visible focus states, semantic headings, labelled fields, descriptive image text, strong contrast, and responsive layouts.
-- Verify the finished experience on desktop and mobile, including navigation and form interactions.
+## Content maintenance
+- Split the current central data module into small purpose-specific files for site details, news, conferences, programme, speakers, and committee information.
+- Keep presentation components independent from content, so future administrators update short structured records rather than page markup.
+- Add a short maintainer guide explaining where to add a news item, conference edition, programme entry, speaker, important date, or contact detail.
+- Continue using structured files for this first version; a database or CMS would add unnecessary complexity until multiple non-technical editors or browser-based editing are required.
+
+## Verification
+- Check every public page and yearly archive URL on desktop, laptop, tablet, and mobile.
+- Verify the collapsed navigation, chronological news order, 2013–2026 archive links, form confirmation states, keyboard focus, text contrast, overflow, and unique page metadata.
+- Confirm that no factual dates, prices, speakers, addresses, or official university claims were invented.
 
 ## Technical details
-- Keep all editable conference content in centralized data structures.
-- Use TanStack Router links and separate route files for every main navigation destination.
-- Use semantic design tokens in the global style system and reusable React components throughout.
-- No database or payment integration; submissions remain demonstrative until a backend is requested.
+- Promote `/conferences` to a layout with an index child and yearly detail children so each archive page renders correctly.
+- Use TanStack Router links and existing semantic design tokens throughout.
+- Use the uploaded screenshots only as structural references; do not embed or reproduce EARNet branding or artwork.
