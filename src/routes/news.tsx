@@ -1,7 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Newspaper } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { GlassPanel, PageIntro, SectionLabel } from "@/components/conference/site";
-import { newsItems } from "@/lib/conference-data";
-export const Route=createFileRoute("/news")({head:()=>({meta:[{title:"News — Accounting Research Day"},{name:"description",content:"Latest announcements and updates from the Accounting Research Day conference."},{property:"og:title",content:"Accounting Research Day News"},{property:"og:description",content:"Conference announcements, deadlines and programme updates."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:Page});
-function Page(){return <><PageIntro label="News" title="Conference news and announcements">This page is ready for updates about speakers, deadlines, the programme and practical arrangements.</PageIntro><section className="mx-auto max-w-7xl px-5 py-20 lg:px-8"><div className="mb-10 flex items-end justify-between gap-5"><div><SectionLabel>Latest updates</SectionLabel><h2 className="font-display text-4xl font-semibold">From the organising committee</h2></div><Newspaper className="hidden size-9 text-brand sm:block"/></div><div className="grid gap-6 lg:grid-cols-3">{newsItems.map((item,index)=><article key={item.title} className={index===0?"glass-panel p-7 lg:col-span-2":"glass-panel p-7"}><div className="flex flex-wrap items-center gap-3"><span className="eyebrow text-gold">{item.category}</span><span className="text-xs text-muted-foreground">{item.date}</span></div><h2 className="mt-5 font-display text-3xl font-semibold text-ink">{item.title}</h2><p className="mt-3 text-sm leading-relaxed text-ink/65">{item.summary}</p><Button variant="link" className="mt-5 px-0" type="button">Read update <ArrowRight/></Button><p className="mt-2 text-xs text-muted-foreground">Placeholder news item — publishing is not connected yet.</p></article>)}</div></section></>}
+import { NewsFeed } from "@/components/conference/news";
+import { PageIntro } from "@/components/conference/site";
+import { newsItems } from "@/data/news";
+
+export const Route = createFileRoute("/news")({
+  head: () => ({ meta: [
+    { title: "News — Accounting Research Day" },
+    { name: "description", content: "Latest announcements and updates from the Accounting Research Day conference." },
+    { property: "og:title", content: "Accounting Research Day News" },
+    { property: "og:description", content: "Conference announcements, deadlines and programme updates." },
+    { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
+  ]}),
+  component: Page,
+});
+
+function Page() {
+  return <><PageIntro label="News" title="News and announcements">Updates about the conference, deadlines, programme and practical arrangements, newest first.</PageIntro>
+    <section className="mx-auto max-w-5xl px-5 py-14 lg:px-8"><NewsFeed items={newsItems} /><p className="mt-4 text-xs text-muted-foreground">News dates are placeholders until confirmed.</p></section></>;
+}

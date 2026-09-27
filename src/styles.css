@@ -70,7 +70,7 @@
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 0.125rem;
   --background: oklch(0.97 0.015 86);
   --foreground: oklch(0.25 0.012 70);
   --card: oklch(0.99 0.008 86);
@@ -179,7 +179,7 @@
 
 @utility footer-link { transition: color 180ms ease; &:hover { color: var(--paper); } }
 @utility eyebrow { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; }
-@utility glass-panel { border: 1px solid color-mix(in oklab, var(--brand) 10%, transparent); border-radius: var(--radius); background: color-mix(in oklab, var(--card) 68%, transparent); backdrop-filter: blur(20px); box-shadow: 0 14px 40px color-mix(in oklab, var(--brand-deep) 7%, transparent); }
+@utility glass-panel { border: 1px solid color-mix(in oklab, var(--brand) 10%, transparent); border-radius: var(--radius); background: color-mix(in oklab, var(--card) 68%, transparent); box-shadow: none; }
 @utility page-intro { background: linear-gradient(180deg, var(--mist), var(--paper)); border-bottom: 1px solid color-mix(in oklab, var(--brand) 9%, transparent); }
 @utility programme-row { transition: background 180ms ease, padding-left 220ms ease; &:hover { background: color-mix(in oklab, var(--mist) 65%, transparent); padding-left: 1.75rem; } }
 @utility skip-link { position: fixed; left: 1rem; top: -5rem; z-index: 100; background: var(--brand-deep); color: var(--paper); padding: 0.75rem 1rem; border-radius: 0.25rem; &:focus { top: 1rem; } }
