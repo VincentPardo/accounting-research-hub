@@ -1,3 +1,5 @@
+import type { LinkProps } from "@tanstack/react-router";
+
 /** News records. Add new items anywhere; pages sort them newest first by `isoDate`. */
 export type NewsItem = {
   /** Sortable date (YYYY-MM-DD). Use a placeholder date until confirmed. */
@@ -9,7 +11,7 @@ export type NewsItem = {
   summary: string;
   image?: string;
   /** Optional internal path (e.g. "/call-for-papers") or external URL. */
-  link?: string;
+  link?: LinkProps["to"] | `http${string}`;
 };
 
 const items: NewsItem[] = [
