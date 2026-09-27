@@ -15,7 +15,7 @@ export type NewsItem = {
 };
 
 const items: NewsItem[] = [
-  { isoDate: "2026-03-01", date: "[DATE]", category: "Announcement", title: "Accounting Research Day 2026 announced", summary: "Save-the-date details and the confirmed campus location will be published here.", link: "/conferences/2026" },
+  { isoDate: "2026-03-01", date: "[DATE]", category: "Announcement", title: "Accounting Research Day 2026 announced", summary: "Save-the-date details and the confirmed campus location will be published here.", link: "/conferences" },
   { isoDate: "2026-02-01", date: "[DATE]", category: "Call for Papers", title: "Call for papers opens", summary: "Submission requirements, research themes and the review timeline are available.", link: "/call-for-papers" },
   { isoDate: "2026-01-01", date: "[DATE]", category: "Programme", title: "Keynote announcement forthcoming", summary: "The featured keynote profile will be shared after formal confirmation.", link: "/speakers" },
 ];

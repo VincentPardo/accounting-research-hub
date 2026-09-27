@@ -4,8 +4,9 @@ import type { NewsItem } from "@/data/news";
 
 export function NewsLink({ item }: { item: NewsItem }) {
   if (!item.link) return null;
-  if (typeof item.link === "string" && item.link.startsWith("http")) return <a href={item.link as string} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-sm font-semibold text-brand hover:underline">Read more <ArrowRight className="size-4" /></a>;
-  return <Link to={item.link} className="inline-flex items-center gap-1 text-sm font-semibold text-brand hover:underline">Read more <ArrowRight className="size-4" /></Link>;
+  const link = item.link;
+  if (link.startsWith("http")) return <a href={link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-sm font-semibold text-brand hover:underline">Read more <ArrowRight className="size-4" /></a>;
+  return <Link to={link as Exclude<typeof link, `http${string}`>} className="inline-flex items-center gap-1 text-sm font-semibold text-brand hover:underline">Read more <ArrowRight className="size-4" /></Link>;
 }
 
 export function NewsFeed({ items }: { items: NewsItem[] }) {
