@@ -9,6 +9,8 @@ const navItems = [
   ["Call for Papers", "/call-for-papers"], ["Registration", "/registration"], ["Contact", "/contact"],
 ] as const;
 
+const footerItems = [...navItems, ["Speakers", "/speakers"], ["Venue", "/venue"]] as const;
+
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return <header className="sticky top-0 z-50 border-b border-brand/15 bg-paper/90 backdrop-blur-xl">
@@ -50,7 +52,7 @@ export function SiteFooter() {
         <div className="md:col-span-4">
           <p className="eyebrow text-gold">Navigate</p>
           <div className="mt-4 grid grid-cols-2 gap-2 text-sm text-paper/75">
-            {[...navItems, ["Speakers", "/speakers"], ["Venue", "/venue"]] as const.map(([label, to]) => <Link key={to} to={to} className="footer-link">{label}</Link>)}
+            {footerItems.map(([label, to]) => <Link key={to} to={to} className="footer-link">{label}</Link>)}
           </div>
         </div>
         <div className="md:col-span-3">
